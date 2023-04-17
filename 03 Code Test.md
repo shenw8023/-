@@ -456,7 +456,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-class Solution:
+class Solution: #分解的思路
     def __init__(self):
         self.depth = 0
         self.result = 0
@@ -464,12 +464,29 @@ class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        self.depth += 1
-        self.result = max(self.result, self.depth)
-        self.maxDepth(root.left)
-        self.maxDepth(root.right)
-        self.depth -= 1
-        return self.result
+        m_left = self.maxDepth(root.left)
+        m_right = self.maxDepth(root.right)
+        return max(m_left, m_right) + 1
+
+
+class Solution:  #遍历的思路，回溯
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        self.depth = 0
+        self.max_depth = 0
+        def travel(root, depth):
+            if not root:
+                return
+                
+            depth += 1
+            if not root.left and not root.right:
+                self.max_depth = max(self.max_depth, depth)
+            
+            travel(root.left, depth)
+            travel(root.right, depth)
+            self.depth -= 1
+
+        travel(root, 0)
+        return self.max_depth
 ```
 
 
@@ -488,16 +505,14 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    def __init__(self):
-        self.result = []
-    
+
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
             return []
-        self.result.append(root.val)
-        self.preorderTraversal(root.left)
-        self.preorderTraversal(root.right)
-        return self.result
+        res_left = self.preorderTraversal(root.left)
+        res_right = self.preorderTraversal(root.right)
+        return [root.val, *res_left, *res_right]
+
 ```
 
 
@@ -527,12 +542,12 @@ class Solution:
     def tmp_function(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        else:
-            left_depth = self.tmp_function(root.left)
-            right_depth = self.tmp_function(root.right)
-            tmp = left_depth + right_depth
-            self.result = max(tmp, self.result)
-            return max(left_depth, right_depth) + 1
+
+        left_depth = self.tmp_function(root.left)
+        right_depth = self.tmp_function(root.right)
+        tmp = left_depth + right_depth
+        self.result = max(tmp, self.result)
+        return max(left_depth, right_depth) + 1
 ```
 
 
