@@ -2,7 +2,7 @@
 - [手把手刷链表算法——双指针](https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-8f30d/shuang-zhi-0f7cc/)
     - 21. 合并两个有序链表
         - 用到一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点
-    - 87. 分隔链表
+    - 86. 分隔链表
         - 注意断开连接
     - 23. 合并k个有序链表
         - heapq.heappush 稳定性问题，遇到相同值
@@ -14,6 +14,10 @@
     - 160. 两个链表是否相交
     - 142. 入环节点 #[ ]
 
+
+- [递归反转链表](https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-8f30d/di-gui-mo--10b77/)
+    - 206. 反转链表
+    - 92. 反转链表 II
 
 - [手把手刷数组算法——双指针](https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-48c1d/shuang-zhi-fa4bd/)
     - 26. 删除有序数组中的重复项
